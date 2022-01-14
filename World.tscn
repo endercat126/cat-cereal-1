@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://grfghbtfdvdhb bg.png" type="Texture" id=1]
+[ext_resource path="res://CatSpoon.gd" type="Script" id=2]
+[ext_resource path="res://CAT SPOON.png" type="Texture" id=3]
+[ext_resource path="res://htgf bjnntfjhknfjfgnjkdng.png" type="Texture" id=4]
+[ext_resource path="res://CAT CEREAL NO SPOON.png" type="Texture" id=5]
+[ext_resource path="res://CatCereal.gd" type="Script" id=6]
+[ext_resource path="res://Endercat.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 74.6178, 58.7898 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 144, 120 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 80, 24 )
+
+[node name="World" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Endercat" type="Area2D" parent="."]
+position = Vector2( 752, 576 )
+scale = Vector2( 0.591175, 0.591175 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Endercat"]
+position = Vector2( 87.4382, -332.565 )
+scale = Vector2( 1.30842, 1.30842 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Endercat"]
+position = Vector2( -91.1357, -187.068 )
+rotation = 0.785398
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="CatCereal" type="Area2D" parent="."]
+position = Vector2( 176, 472 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="CatCereal"]
+scale = Vector2( 0.390411, 0.390411 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatCereal"]
+shape = SubResource( 2 )
+
+[node name="CatSpoon" type="KinematicBody2D" parent="." groups=["Spoon"]]
+position = Vector2( 328, 176 )
+rotation = -0.349066
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="CatSpoon"]
+scale = Vector2( 0.390411, 0.390411 )
+texture = ExtResource( 3 )
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatSpoon"]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Endercat" to="Endercat" method="_on_Endercat_body_entered"]
+[connection signal="body_entered" from="CatCereal" to="CatCereal" method="_on_CatCereal_body_entered"]
