@@ -1,3 +1,3 @@
-# Cat Cereal 2
+# Cat Cereal
 
-play at https://endercat126.github.io/cat-cereal-2/build/cat_cereal.html
+play at https://endercat126.github.io/cat-cereal-1/build/cat_cereal.html
